@@ -1,4 +1,5 @@
 from config import POPULATION_RASTER, ADMIN_SHP, OUTPUTS_DIR
+from scripts.utils import timed
 import geopandas as gpd
 import rasterio
 from rasterio.plot import show
@@ -9,6 +10,7 @@ import numpy as np
 
 VIS_OUTPUT = OUTPUTS_DIR / "pop_raster_with_admin.png"
 
+@timed
 def plot_population_raster():
     admin_gdf = gpd.read_file(ADMIN_SHP).to_crs(epsg=3857)
     bounds = admin_gdf.total_bounds

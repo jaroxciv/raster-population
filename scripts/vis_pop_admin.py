@@ -1,4 +1,5 @@
 from config import ADMIN_SHP, OUTPUTS_DIR
+from scripts.utils import timed
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import contextily as cx
@@ -6,6 +7,7 @@ import contextily as cx
 
 VIS_OUTPUT = OUTPUTS_DIR / "admin_boundaries.png"
 
+@timed
 def visualize_admin_boundaries():
     admin_gdf = gpd.read_file(ADMIN_SHP).to_crs(epsg=3857)
     fig, ax = plt.subplots(figsize=(12, 10))

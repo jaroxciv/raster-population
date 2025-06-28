@@ -2,7 +2,7 @@ from config import ADMIN_SHP, POPULATION_RASTER, OUTPUTS_DIR
 import geopandas as gpd
 from rasterstats import zonal_stats
 import rasterio
-from scripts.utils import timed
+from src.utils import timed
 
 @timed
 def main():

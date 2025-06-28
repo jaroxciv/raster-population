@@ -1,5 +1,5 @@
 from config import POPULATION_RASTER, ADMIN_SHP, OUTPUTS_DIR
-from scripts.utils import timed
+from src.utils import timed
 import geopandas as gpd
 import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling

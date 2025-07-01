@@ -1,4 +1,5 @@
 import time
+from pathlib import Path
 from functools import wraps
 
 def format_duration(seconds):
@@ -21,3 +22,11 @@ def timed(func):
         print(f"\nElapsed time: {format_duration(elapsed)}")
         return result
     return wrapper
+
+def make_output_path(input_path: Path, outputs_dir: Path, suffix="_stats.gpkg") -> Path:
+    """
+    Returns a standardised output path based on input filename and desired suffix.
+    E.g., data/new_shp.json -> outputs/new_shp_stats.gpkg
+    """
+    stem = input_path.stem  # 'new_shp' from 'new_shp.json'
+    return outputs_dir / f"{stem}{suffix}"

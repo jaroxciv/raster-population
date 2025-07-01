@@ -1,5 +1,5 @@
 from config import ADMIN_SHP, OUTPUTS_DIR
-from scripts.utils import timed
+from src.utils import timed
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import contextily as cx

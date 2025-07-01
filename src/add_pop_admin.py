@@ -2,7 +2,7 @@ from config import ADMIN_SHP, POPULATION_RASTER, OUTPUTS_DIR
 import geopandas as gpd
 from rasterstats import zonal_stats
 import rasterio
-from src.utils import timed
+from src.utils import timed, make_output_path
 
 @timed
 def main():
@@ -34,7 +34,7 @@ def main():
         admin_gdf[f"pop_{stat}"] = [s[stat] for s in stats]
 
     # Output
-    output_path = OUTPUTS_DIR / "segmentos_censales_pop_2018.gpkg"
+    output_path = make_output_path(ADMIN_SHP, OUTPUTS_DIR, suffix="_stats.gpkg")
     admin_gdf.to_file(output_path, driver="GPKG")
     print(f"\n✅ Saved: {output_path}")
 
